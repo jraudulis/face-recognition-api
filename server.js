@@ -38,8 +38,8 @@ app.get('/profile/:id', (req, res) => { profile.handleProfileReq(req, res, db) }
 app.put('/image', (req, res) =>{ image.handleImageReq(req, res, db) });
 app.post('/imageUrl', (req, res) =>{ image.handleApiCall(req, res) });
 
-app.listen(3001, () =>{
- console.log('server is running');
+app.listen(process.env.PORT || 3001 () =>{
+ console.log(`Server is runnin on ${process.env.PORT}`);
 });
 
 
