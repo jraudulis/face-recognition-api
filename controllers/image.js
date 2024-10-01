@@ -52,7 +52,7 @@ const requestOptions = returnClarifaiRequestOptions(req.body.input)
  .catch(err => {
       console.error('Error contacting Clarifai API:', err);  // Log the error
       res.status(400).json('Unable to contact Clarifai API');  // Return error to frontend
-  });
+    });
 }
 
 
