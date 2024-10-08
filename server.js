@@ -7,10 +7,10 @@ const myPlaintextPassword = 's0/\/\P4$$w0rD';
 const someOtherPlaintextPassword = 'not_bacon';
 const knex = require('knex');
 
-const register = require('./controllers/register');
-const signin = require('./controllers/signin');
-const profile = require('./controllers/profile');
-const image = require('./controllers/image');
+import handleRegister from "./controllers/register.js";
+import handleSignin from "./controllers/signin.js";
+import handleProfileReq from "./controllers/signin.js";
+import handleImageReq from "./controllers/image.js";
 
 const db = knex({
   client: 'pg',
