@@ -23,8 +23,5 @@ db.select('email', 'hash').from('login')
   .catch(err => res.status(400).json('something went wrong'))
 };
 
-module.exports = {
- handleSignin: handleSignin
-};
-
+export default handleSignin;
 

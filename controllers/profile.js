@@ -13,6 +13,4 @@ const handleProfileReq = (req, res, db) => {
 
 }
 
-module.exports = {
- handleProfileReq: handleProfileReq
-};
+export default handleProfileReq;

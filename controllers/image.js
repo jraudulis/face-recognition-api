@@ -69,7 +69,4 @@ const { id } = req.body;
 
 }
 
-module.exports = {
- handleImageReq,
- handleApiCall
-};
+export default handleApiCall, handleImageReq;
