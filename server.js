@@ -1,11 +1,12 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const bcrypt = require('bcryptjs');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import bcrypt from 'bcryptjs';
+import knex from 'knex';
 const saltRounds = 10;
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
+const myPlaintextPassword = 's0/\\/\\P4$$w0rD';  // Ensure proper escaping of the backslashes
 const someOtherPlaintextPassword = 'not_bacon';
-const knex = require('knex');
+
 
 import handleRegister from "./controllers/register.js";
 import handleSignin from "./controllers/signin.js";
