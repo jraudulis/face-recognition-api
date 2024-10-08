@@ -1,4 +1,4 @@
-const clarifai = require('clarifai');
+import clarifai from 'clarifai';
 
   const returnClarifaiRequestOptions = (imageUrl) =>{
 
