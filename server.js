@@ -10,7 +10,7 @@ const knex = require('knex');
 import handleRegister from "./controllers/register.js";
 import handleSignin from "./controllers/signin.js";
 import handleProfileReq from "./controllers/signin.js";
-import handleImageReq from "./controllers/image.js";
+import handleApiCalls from "./controllers/image.js";
 
 const db = knex({
   client: 'pg',

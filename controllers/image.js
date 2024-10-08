@@ -69,6 +69,6 @@ const { id } = req.body;
 
 }
 
-const handleImageReq = {handleApiCall, handleImageReq};
+const handleApiCalls = {handleApiCall, handleImageReq};
 
-export default handleImageReq;
+export default handleApiCalls;
