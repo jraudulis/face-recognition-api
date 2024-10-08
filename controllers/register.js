@@ -1,46 +1,35 @@
-const handleRegister = (req, res, db, bcrypt) => {
-  const { email, name, password } = req.body;
-  const saltRounds = 10;
+const handleRegister = (req, res, db, bcrypt) =>{
+ const { email, name, password } = req.body;
+ const saltRounds = 10;
+ const hash = bcrypt.hashSync(password, saltRounds);
 
-  // Input validation
-  if (!email || !name || !password) {
-    return res.status(400).json('Invalid form submission');
-  }
-
-  // Generate password hash
-  const hash = bcrypt.hashSync(password, saltRounds);
-
-  // Start database transaction
-  db.transaction(trx => {
-    trx.insert({
-      hash: hash,
-      email: email
-    })
-      .into('login')
-      .returning('email')
-      .then(loginEmail => {
-        return trx('users')
-          .returning('*')
-          .insert({
-            email: loginEmail[0].email,  // Ensure loginEmail[0] exists
-            name: name,
-            joined: new Date()
-          })
-          .then(user => {
-            res.json(user[0]);  // Respond with the newly created user
-          })
-          .catch(err => {
-            console.error('Error inserting user:', err);
-            res.status(400).json('Unable to register user');  // Catching user insert errors
-          });
+ if(!email || !name || !password){
+  return res.status(400).json('invalid form')
+ }
+ 
+ db.transaction(trx => {
+   trx.insert({
+    hash: hash,
+    email: email
+   })
+    .into('login')
+    .returning('email')
+    .then(loginEmail => {
+      return trx('users')
+      .returning('*')
+      .insert({
+        email: loginEmail[0].email,
+        name: name,
+        joined: new Date()
       })
-      .then(trx.commit)
-      .catch(trx.rollback);  // Rollback transaction on error
+      .then(user =>{
+       res.json(user[0]);
+      })
+    })
+    .then(trx.commit)
+    .catch(trx.rollback)
   })
-    .catch(err => {
-      console.error('Transaction error:', err);  // Log detailed error for debugging
-      res.status(500).json('Unable to register');  // Respond with status 500 for server errors
-    });
+  .catch(err => res.status(400).json('unable to register')) 
 };
 
 export default handleRegister;
