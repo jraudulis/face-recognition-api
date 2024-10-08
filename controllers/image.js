@@ -2,7 +2,7 @@ const clarifai = require('clarifai');
 
   const returnClarifaiRequestOptions = (imageUrl) =>{
 
-  const PAT = '36108aa38dd744aa9d67c46f6c47a3eb';
+  const PAT = 'CLARIFAI_API';
   const USER_ID = 'jr291092';
   const APP_ID = 'face-recognition';
   const MODEL_ID = 'face-detection';
