@@ -36,8 +36,8 @@ app.get('/', (req, res) => {
 app.post('/signin', (req, res) => { handleSignin(req, res, db, bcrypt) });  // Fixed the function reference
 app.post('/register', (req, res) => { handleRegister(req, res, db, bcrypt) });
 app.get('/profile/:id', (req, res) => { handleProfileReq(req, res, db) });  // Corrected function reference
-app.put('/image', (req, res) => { handleImageReq(req, res, db) });  // Use handleImageReq directly
-app.post('/imageUrl', (req, res) => { handleApiCalls(req, res) });  // Use handleApiCall directly
+app.put('/image', (req, res) => { handleApiCalls.handleImageReq(req, res, db) });  // Use handleImageReq directly
+app.post('/imageUrl', (req, res) => { handleApiCalls.handleApiCall(req, res) });  // Use handleApiCall directly
 
 // Set up the server port
 const PORT = process.env.PORT || 3001;
