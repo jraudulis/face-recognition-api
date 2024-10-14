@@ -2,7 +2,7 @@ import clarifai from 'clarifai';
 
   const returnClarifaiRequestOptions = (imageUrl) =>{
 
-  const PAT = 'process.env.CLARIFAI_API_KEY';
+  const PAT = process.env.CLARIFAI_API_KEY;
   const USER_ID = 'jr291092';
   const APP_ID = 'face-recognition';
   const MODEL_ID = 'face-detection';
